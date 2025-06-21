@@ -11,7 +11,7 @@
     <body>
         <c:if test="${not empty sessionScope.USER}">
             <c:set var="user" value="${sessionScope.USER}" />
-            <h1>${user.fullName}'s Cart</h1>
+            <h1>${user.lastName} ${user.firstName}'s Cart</h1>
         </c:if>
         <a href="shop.jsp">Back to shop</a>
 
