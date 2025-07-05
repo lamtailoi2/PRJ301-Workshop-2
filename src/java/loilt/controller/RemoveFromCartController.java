@@ -21,18 +21,12 @@ public class RemoveFromCartController extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    private final String LOGIN_PAGE = "login.html";
-    private final String CART_VIEW = "cartView.jsp";
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String id = request.getParameter("txtMobileId");
+        String lastSearchvalue = request.getParameter("lastSearchValue");
         HttpSession session = request.getSession(false);
-        if (session == null) {
-            response.sendRedirect(LOGIN_PAGE);
-            return;
-        }
         CartObj cart = (CartObj) session.getAttribute("CART");
 
         if (cart != null) {
@@ -44,8 +38,11 @@ public class RemoveFromCartController extends HttpServlet {
 
             }
         }
-        response.sendRedirect(CART_VIEW);
-
+        String url = "DispatchController"
+                + "?btAction=View Cart"
+                + "&lastSearchValue="
+                + lastSearchvalue;
+        response.sendRedirect(url);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

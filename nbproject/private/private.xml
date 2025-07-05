@@ -3,8 +3,37 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/login.html</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/user/UserDAO.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/checkoutSuccess.jsp</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/CheckoutController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/RemoveFromCartController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/DeleteController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/mobile/MobileDAO.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/createUser.jsp</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/LoginController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/util/CookieUtil.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/createUser.html</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/CartViewController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/LogoutController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/util/DBHelper.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/filter/LoginFilter.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/invalid.html</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/filter/RoleFilter.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/CreateUserController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/UpdateController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/shop.jsp</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/SearchController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/AddToCartController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/cart/CartObj.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/ProcessRequestController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/DispatchController.java</file>
             <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/META-INF/context.xml</file>
-            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/conf/MANIFEST.MF</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/search.jsp</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/web/cartView.jsp</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/controller/SearchProductController.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/mobile/CreateMobileError.java</file>
+            <file>file:/D:/PRJ301/PRJ301-Workshop-2/src/java/loilt/mobile/MobileDTO.java</file>
         </group>
     </open-files>
 </project-private>

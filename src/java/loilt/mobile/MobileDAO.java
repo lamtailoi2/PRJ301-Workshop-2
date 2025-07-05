@@ -10,7 +10,7 @@ import java.sql.Connection;
 
 public class MobileDAO {
 
-    public List<MobileDTO> searchByIdOrName(String keyword) throws SQLException, ClassNotFoundException {
+    public List<MobileDTO> searchByName(String keyword) throws SQLException, ClassNotFoundException {
         List<MobileDTO> list = new ArrayList<>();
         Connection con = null;
         PreparedStatement stm = null;
@@ -21,11 +21,10 @@ public class MobileDAO {
             if (con != null) {
                 String sql = "SELECT mobileId, mobileName, price, description, quantity, notSale , yearOfProduction "
                         + "FROM tbl_Mobile "
-                        + "WHERE mobileId LIKE ? OR mobileName LIKE ?";
+                        + "WHERE mobileName LIKE ?";
                 stm = con.prepareStatement(sql);
                 String value = "%" + keyword + "%";
                 stm.setString(1, value);
-                stm.setString(2, value);
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     String id = rs.getString("mobileId");

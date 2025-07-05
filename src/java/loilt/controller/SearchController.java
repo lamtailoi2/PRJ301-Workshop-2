@@ -38,28 +38,21 @@ public class SearchController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private final String SEARCH_PAGE = "search.jsp";
-    private final String SHOP_PAGE = "shop.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String role = request.getParameter("txtRole");
-        String url = SHOP_PAGE;
-        try {
+        String url = "";
+        String searchValue = request.getParameter("txtSearchValue");
 
-            if (role.equals("1")) {
-                String searchValue = request.getParameter("txtSearchValue");
+        try {
+            if (searchValue != null) {
                 UserDAO dao = new UserDAO();
-                List<UserDTO> results = dao.getUsersByLastName(searchValue);
+                List<UserDTO> results = dao.getUsersByLastName(searchValue.trim());
                 request.setAttribute("SEARCH_RESULT", results);
                 url = SEARCH_PAGE;
-            } else {
-                String minPrice = request.getParameter("txtMinPrice");
-                String maxPrice = request.getParameter("txtMaxPrice");
-                MobileDAO dao = new MobileDAO();
-                List<MobileDTO> list = dao.searchByValue(Float.parseFloat(minPrice), Float.parseFloat(maxPrice));
-                request.setAttribute("SEARCH_RESULT", list);
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(SearchController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

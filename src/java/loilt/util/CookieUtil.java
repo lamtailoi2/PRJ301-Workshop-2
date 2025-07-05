@@ -42,4 +42,16 @@ public class CookieUtil {
         response.addCookie(cookie);
     }
 
+    public static void clearCookies(HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                Cookie toDelete = new Cookie(cookie.getName(), "");
+                toDelete.setMaxAge(0);
+                toDelete.setPath("/");
+                response.addCookie(toDelete);
+            }
+        }
+    }
+
 }

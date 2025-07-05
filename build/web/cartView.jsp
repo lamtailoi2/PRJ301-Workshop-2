@@ -13,8 +13,12 @@
             <c:set var="user" value="${sessionScope.USER}" />
             <h1>${user.lastName} ${user.firstName}'s Cart</h1>
         </c:if>
-        <a href="shop.jsp">Back to shop</a>
-
+        <c:url var="searchUrl" value="/DispatchController">
+            <c:param name="btAction" value="Search Product" />
+            <c:param name="txtSearchValue" value="${empty param.lastSearchValue ? '' : param.lastSearchValue}" />
+        </c:url>
+        <a href="${searchUrl}">Back To Search</a>
+        <c:out value="${param.lastSearchValue}"/>
         <c:if test="${not empty sessionScope.CART}">
             <c:set var="cart" value="${sessionScope.CART}" />
             <table border="1">
@@ -44,7 +48,10 @@
                         <td>
                             <fmt:formatNumber value="${item.mobile.price * item.quantity}" type="currency" maxFractionDigits="2" minFractionDigits="2"/>
                         </td>
-                        <td> <input type="submit" value="Remove Item" name="btAction" /> </td>
+                        <td> 
+                            <input type="submit" value="Remove Item" name="btAction" />
+                            <input type="hidden" name="lastSearchValue" value="${param.lastSearchValue}" />
+                        </td>
                     </form>
                 </tr>
             </c:forEach>

@@ -6,7 +6,6 @@ package loilt.controller;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -56,7 +55,6 @@ public class LoginController extends HttpServlet {
                 if (remember != null) {
                     CookieUtil.addCookie(response, "userId", user.getUserId(), 7 * 24 * 60 * 60);
                 }
-
                 if (user.getRole() == 1) {
                     url = SEARCH_PAGE;
                 } else {

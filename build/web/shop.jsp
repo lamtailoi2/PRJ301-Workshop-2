@@ -13,16 +13,22 @@
             <c:set var="lastName" value="${sessionScope.USER.lastName}" />
             <c:set var="role" value="${sessionScope.USER.role}" />
             <h1>Welcome ${lastName} ${firstName}</h1>
-            <a href="cartView.jsp">View Your Cart</a>
+            <c:url var="viewCartUrl" value="/DispatchController">
+                <c:param name="btAction" value="View Cart" />
+                <c:param name="lastSearchValue" value="${param.txtSearchValue}" />
+            </c:url>
+            <a href="${viewCartUrl}">View Your Cart</a>
+            <form action="DispatchController" method="POST">
+                <input type="hidden" name="txtUserId" value="${sessionScope.USER.userId}" />
+                <input type="submit" value="Logout" name="btAction" />
+            </form>
         </c:if>
 
         <form action="DispatchController">
-            <input type="number" min="1" name="txtMinPrice" value="${param.txtMinPrice}" placeholder="Enter min price...." />
-            <input type="number" min="1" name="txtMaxPrice" value="${param.txtMaxPrice}" placeholder="Enter max price...." />
-            <input type="hidden" name="txtRole" value="${role}" />
-            <input type="submit" value="Search" name="btAction" />
+            <input type="text" name="txtSearchValue" value="${param.txtSearchValue}" placeholder="Enter product name...." />
+            <input type="submit" value="Search Product" name="btAction" />
         </form>
-        <c:if test="${ (not empty param.txtMinPrice) && (not empty param.txtMaxPrice)}">
+        <c:if test="${not empty param.txtSearchValue}">
             <c:choose>
                 <c:when test="${not empty requestScope.SEARCH_RESULT}">
                     <table border="1">
@@ -56,9 +62,7 @@
                                 </td>
                                 <td>
                                     <input type="submit" value="Add To Cart" name="btAction" />
-                                    <input type="hidden" name="txtRole" value="${role}" />
-                                    <input type="hidden" name="lastMinPrice" value="${param.txtMinPrice}"  />
-                                    <input type="hidden" name="lastMaxPrice" value="${param.txtMaxPrice}" />
+                                    <input type="hidden" name="lastSearchValue" value="${param.txtSearchValue}" />
                                 </td>
                             </form>
                         </tr>

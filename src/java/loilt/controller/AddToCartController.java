@@ -35,21 +35,15 @@ public class AddToCartController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     private final String LOGIN_PAGE = "login.html";
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String mobileId = request.getParameter("txtMobileId");
-        String minPrice = request.getParameter("lastMinPrice");
-        String maxPrice = request.getParameter("lastMaxPrice");
-        String role = request.getParameter("txtRole");
+        String searchValue = request.getParameter("lastSearchValue");
         String url = "";
         try {
             HttpSession session = request.getSession(false);
-            if (session == null) {
-                response.sendRedirect(LOGIN_PAGE);
-                return;
-            }
             CartObj cart = (CartObj) session.getAttribute("CART");
             if (cart == null) {
                 cart = new CartObj();
@@ -59,13 +53,9 @@ public class AddToCartController extends HttpServlet {
             cart.addToCart(dto);
             session.setAttribute("CART", cart);
             url = "DispatchController"
-                    + "?txtMinPrice="
-                    + minPrice
-                    + "&txtMaxPrice="
-                    + maxPrice
-                    + "&txtRole="
-                    + role
-                    + "&btAction=Search";
+                    + "?txtSearchValue="
+                    + searchValue
+                    + "&btAction=Search Product";
         } catch (SQLException ex) {
             Logger.getLogger(AddToCartController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

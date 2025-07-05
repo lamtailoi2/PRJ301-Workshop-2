@@ -36,7 +36,6 @@ public class CreateUserController extends HttpServlet {
         String confirm = request.getParameter("txtConfirm");
         String firstName = request.getParameter("txtFirstName");
         String lastName = request.getParameter("txtLastName");
-        System.out.println("confirmmmmmmmmmmmmmmmmmmmmmmmmmmmm" + confirm);
         boolean hasError = false;
         CreateUserErrors errors = new CreateUserErrors();
 

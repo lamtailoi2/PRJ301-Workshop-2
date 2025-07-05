@@ -33,17 +33,17 @@ public class UpdateController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Check role
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            response.sendRedirect("login.html");
-            return;
-        } else {
-            UserDTO user = (UserDTO) session.getAttribute("USER");
-            if (user == null || user.getRole() != 1) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-                return;
-            }
-        }
+//        HttpSession session = request.getSession(false);
+//        if (session == null) {
+//            response.sendRedirect("login.html");
+//            return;
+//        } else {
+//            UserDTO user = (UserDTO) session.getAttribute("USER");
+//            if (user == null || user.getRole() != 1) {
+//                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//                return;
+//            }
+//        }
 
         String url = "";
         String userId = request.getParameter("txtUserId");
@@ -71,7 +71,6 @@ public class UpdateController extends HttpServlet {
                     : dto.getLastName());
 
             dto.setRole(chkRole != null ? 1 : 0);
-            System.out.println(">>>>>>>>>>>>>>>>dto" + firstName);
             boolean result = dao.updateUser(dto);
             if (result) {
                 url = "DispatchController"

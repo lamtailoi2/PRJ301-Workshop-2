@@ -12,13 +12,16 @@
             <c:set var="firstName" value="${sessionScope.USER.firstName}" />
             <c:set var="lastName" value="${sessionScope.USER.lastName}" />
             <c:set var="role" value="${sessionScope.USER.role}" />
-            <h1>Welcome ${lastName} ${firstName}</h1>
+            <h1>Welcome ${lastName} ${firstName}</h1> <br />
+            <form action="DispatchController" method="POST">
+                <input type="hidden" name="txtUserId" value="${sessionScope.USER.userId}" />
+                <input type="submit" value="Logout" name="btAction" />
+            </form>
         </c:if>
 
         <form action="DispatchController">
             <input type="text" name="txtSearchValue" value="${param.txtSearchValue}" placeholder="Enter last name..." />
             <input type="submit" value="Search" name="btAction" />
-            <input type="hidden" name="txtRole" value="${role}" />
         </form>
 
         <c:if test="${not empty param.txtSearchValue}">

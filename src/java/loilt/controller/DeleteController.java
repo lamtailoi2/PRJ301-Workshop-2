@@ -32,17 +32,17 @@ public class DeleteController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Check role
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            response.sendRedirect(LOGIN_PAGE);
-            return;
-        } else {
-            UserDTO user = (UserDTO) session.getAttribute("USER");
-            if (user == null || user.getRole() != 1) {
-                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
-                return;
-            }
-        }
+//        HttpSession session = request.getSession(false);
+//        if (session == null) {
+//            response.sendRedirect(LOGIN_PAGE);
+//            return;
+//        } else {
+//            UserDTO user = (UserDTO) session.getAttribute("USER");
+//            if (user == null || user.getRole() != 1) {
+//                response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
+//                return;
+//            }
+//        }
 
         String userId = request.getParameter("txtUserId");
         String lastSearchValue = request.getParameter("lastSearchValue");
@@ -51,7 +51,6 @@ public class DeleteController extends HttpServlet {
         try {
             UserDAO dao = new UserDAO();
             boolean result = dao.deleteByUserId(userId);
-            System.out.println(">>>>>>>>>>>>>>>>>>>>>" + result);
             if (result) {
                 url = "DispatchController"
                         + "?btAction=Search"

@@ -36,18 +36,19 @@ public class ProcessRequestController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = LOGIN_PAGE;
         String userId = CookieUtil.getCookieValue(request, "userId");
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>USER_ID" + userId);
         try {
             if (userId != null) {
                 UserDAO dao = new UserDAO();
                 UserDTO dto = dao.getUserById(userId);
                 HttpSession session = request.getSession();
                 session.setAttribute("USER", dto);
-                if (dto.getRole() == 2) {
+                if (dto.getRole() == 1) {
                     url = SEARCH_PAGE;
                 } else {
                     url = SHOP_PAGE;
                 }
+            } else {
+                CookieUtil.clearCookies(request, response);
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(ProcessRequestController.class.getName()).log(Level.SEVERE, null, ex);

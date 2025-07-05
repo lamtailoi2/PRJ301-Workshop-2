@@ -23,6 +23,7 @@ public class DispatchController extends HttpServlet {
     private final String LOGIN_PAGE = "login.html";
     private final String LOGIN_CONTROLLER = "LoginController";
     private final String SEARCH_CONTROLLER = "SearchController";
+    private final String SEARCH_PRODUCT_CONTROLLER = "SearchProductController";
     private final String DELETE_CONTROLLER = "DeleteController";
     private final String UPDATE_CONTROLLER = "UpdateController";
     private final String ADD_TO_CART_CONTROLLER = "AddToCartController";
@@ -30,13 +31,17 @@ public class DispatchController extends HttpServlet {
     private final String CHECKOUT_CONTROLLER = "CheckoutController";
     private final String PROCESS_REQUEST_CONTROLLER = "ProcessRequestController";
     private final String CREATE_USER_CONTROLLER = "CreateUserController";
+    private final String LOGOUT_CONTROLLER = "LogoutController";
+    private final String VIEW_CART_CONTROLLER = "CartViewController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = LOGIN_PAGE;
         String action = request.getParameter("btAction");
+
         try {
+
             if (action == null) {
                 url = PROCESS_REQUEST_CONTROLLER;
             } else if (action.equals("Login")) {
@@ -55,6 +60,12 @@ public class DispatchController extends HttpServlet {
                 url = CHECKOUT_CONTROLLER;
             } else if (action.equals("Create")) {
                 url = CREATE_USER_CONTROLLER;
+            } else if (action.equals("Logout")) {
+                url = LOGOUT_CONTROLLER;
+            } else if (action.equals("Search Product")) {
+                url = SEARCH_PRODUCT_CONTROLLER;
+            } else if (action.equals("View Cart")) {
+                url = VIEW_CART_CONTROLLER;
             }
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
